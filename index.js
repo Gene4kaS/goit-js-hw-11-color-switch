@@ -24,13 +24,11 @@ function onChangeColor() {
     }
 }
 
-
 const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  let currentColor,
-  newColor = "#FFFFFF";
+  let currentColor, newColor = "#FFFFFF";
 
 function randomColor() {
     do {
