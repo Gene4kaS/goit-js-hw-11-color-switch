@@ -16,30 +16,21 @@ const refs = {
 refs.btnStart.addEventListener('click', onChangeColor);
 refs.btnStop.addEventListener('click', onStopChangeColor);
 
-let nIntervalId;
+let nIntervalId = null;
 
 function onChangeColor() {
-    if (!nIntervalId) {
-        nIntervalId = setInterval(randomColor, 1000);
+    refs.btnStart.disabled = true;
+    nIntervalId = setInterval(() => {
+        refs.bodyBcg.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length - 1)]
+        }, 1000)
     }
-}
 
 const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  let currentColor, newColor = "#FFFFFF";
-
-function randomColor() {
-    do {
-        newColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
-    } while (newColor === currentColor);
-
-    refs.bodyBcg.style.backgroundColor = newColor;
-    currentColor = newColor;
-};
 
 function onStopChangeColor() {
+    refs.btnStart.disabled = false;
     clearInterval(nIntervalId);
-    nIntervalId = null; 
   }
